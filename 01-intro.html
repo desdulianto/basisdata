@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/white.css">
+    <title></title>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h1>Sistem Basis Data</h1>
+                <h2>Pengenalan Relational Database Management System (RDBMS)</h2>
+            </section>
+            <section>
+                <h2>Terminologi</h2>
+                <ul>
+                    <li>Database: <q>an organized collection of data.</q></li>
+                    <li>Data (plural)/Datum (singular): <q>fakta tentang suatu objek atau kejadian yang dapat dicatat dan disimpan ke dalam media penyimpanan.</q></li>
+                    <li>System: <q>kumpulan komponen yang saling berinteraksi untuk menjalankan suatu fungsi</q></li>
+                    <li>Database Management System (DBMS): <q>sistem untuk mengelola database</q></li>
+                </ul>
+            </section>
+            <section>
+                <h2>Kenapa butuh sistem basis data</h2>
+                <ul>
+                    <li>Memudahkan operasi terhadap database (Create, Read, Update, Delete)</li>
+                    <li>Memudahkan administrasi database (Access, Backup, Restore)</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Persyaratan Sistem Basis Data</h2>
+                <p>Atomicity, Consistency, Isolation, Durability -- ACID</p>
+                <dl>
+                    <dt>Atomicity</dt>
+                    <dd>Operasi yang dijalankan harus berhasil seluruhnya atau tidak dikerjakan sama sekali.</dd>
+                    <dt>Consistency</dt>
+                    <dd>perubahan yang dilakukan terhadap database harus konsisten sesuai dengan aturan/constraint yang didefinisikan.</dd>
+                </dl>
+            </section>
+            <section>
+                <h2>Persyaratan Sistem Basis Data</h2>
+                <dl>
+                    <dt>Isolation</dt>
+                    <dd>operasi terhadap database harus dilakukan secara mandiri tidak tumpang tindih. Apabila ada dua atau lebih operasi yang dijalankan, operasi tersebut harus dijalankan secara sequential.</dd>
+                    <dt>Durability</dt>
+                    <dd>operasi yang telah di-commit ke database harus bertahan terhadap masalah-masalah yang mungkin timbul.</dd>
+                </dl>
+            </section>
+            <section>
+                <h2>Jenis-jenis Database</h2>
+                <img src="images/database-history.png">
+            </section>
+            <section>
+                <h2>Database Relasional</h2>
+                <ul>
+                    <li>Data diorganisasikan ke dalam satu atau lebih tabel (relation), terdiri dari kolom (atribute/field) dan baris (record/tuple).</li>
+                    <li>Relational Database Management System - RDBMS</li>
+                </ul>
+                <img src="images/relational-model.png" style="height: 320px">
+            </section>
+            <section>
+                <h2>Relational Database Management</h2>
+                <ul>
+                    <li>Oracle Database</li>
+                    <li>Microsoft SQL Server</li>
+                    <li>MySQL/MariaDB</li>
+                    <li>PostgreSQL</li>
+                    <li>IBM DB2</li>
+                    <li>Sybase</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Relational Database Management</h2>
+                <ul>
+                    <li>Data diorganisasikan ke dalam tabel-tabel</li>
+                    <li>Setiap tabel terdiri dari kolom dan baris</li>
+                    <li>Kolom merepresentasikan jenis/tipe data (atribute/field)</li>
+                    <li>Baris merepresentasikan instance data (record/tuple)</li>
+                    <li>Setiap tabel dapat dihubungkan dengan tabel lainnya berdasarkan data pada kolom tertentu</li>
+                    <li>Bahasa yang populer digunakan untuk melakukan query terhadap RDBMS adalah Structured Query Language (SQL)</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Structured Query Language</h2>
+                <ul>
+                    <li>Special-purpose programming language untuk mengelola RDBMS</li>
+                    <li>
+                        <dl>
+                            <dt>Data Definition Language (DDL)</dt>
+                            <dd>Untuk mendefinisikan object database (schema/table, view, dll).</dd>
+                            <dt>Data Manipulation Language (DML)</dt>
+                            <dd>Untuk melakukan operasi CRUD terhadap database.</dd>
+                            <dt>Data Control Language (DCL)</dt>
+                            <dd>Untuk mendefinisikan access control terhadap object database</dd>
+                        </dl>
+                    </li>
+                    <li>Masing-masing vendor menambahkan fitur khusus ke SQL yang bersifat propiertary.</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <script src="reveal.js/js/reveal.js"></script>
+    <script>
+    Reveal.initialize({
+        dependencies: [
+            // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+            //{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+            // Interpret Markdown in <section> elements
+            //{ src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            //{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+            // Syntax highlight for <code> elements
+            //{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+            // Zoom in and out with Alt+click
+            //{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+
+            // Speaker notes
+            //{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+
+            // MathJax
+            //{ src: 'reveal.js/plugin/math/math.js', async: true }
+        ]
+    });
+    </script>
+
+</body>
+</html>
