@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/white.css">
+    <title>Sistem Basis Data: Perancangan</title>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h1>Sistem Basis Data</h1>
+                <h2>Perancangan Basis Data</h2>
+            </section>
+            <section>
+                <h2>Tahapan Perancangan Basis Data</h2>
+                <p>Terdiri dari 6 tahap:</p>
+                <ul>
+                    <li>Requirement Analysis</li>
+                    <li>Conceptual Database Design</li>
+                    <li>Schema Refinement</li>
+                    <li>Logical Database Design</li>
+                    <li>Physical Database Design</li>
+                    <li>Application and Security Design</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Requirement Analysis</h3>
+                <ul>
+                    <li>Data apa yang akan disimpan?</li>
+                    <li>Aplikasi apa yang akan mengakses data dari databse?</li>
+                    <li>Operasi apa yang akan dieksekusi pada database?</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Conceptual Database Design</h3>
+                <ul>
+                    <li>Deskripsi bagaimana data disimpan, diolah dan dikelola</li>
+                    <li>Constraint (aturan/batasan) mengenai data yang disimpan pada database</li>
+                    <li>Digunakan untuk mengkomunikasikan design database antara developer database dengan pengguna (end user)</li>
+                    <li>Salah satu model yang dibuat: Entity Relationship Model</li>
+                    <li>Tool yang digunakan: Entity Relationship Diagram (ERD)</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Schema Refinement</h3>
+                <ul>
+                    <li>Melakukan design lebih lanjut terhadap skema database untuk mengurangi/menghilangkan masalah yang mungkin muncul</li>
+                    <li>Terdapat 3 anomali yang mungkin timbul pada database relasional: insertion, update dan deletion anomaly</li>
+                    <li>Proses normalisasi (database normalization) untuk menghilangkan anomali</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Logical Database Design</h3>
+                <ul>
+                    <li>Menerjemahkan design database ke dalam schema database sesuai dengan DBMS yang digunakan</li>
+                    <li>Untuk database relasional akan dituliskan ke dalam definisi table</li>
+                    <li>Menggunakan perintah SQL Data Definition Language (DDL)</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Physical Database Design</h3>
+                <ul>
+                    <li>Optimasi database untuk meningkatkan kinerja database</li>
+                    <li>Proses yang dilakukan biasanya termasuk pembuatan index, partition, cluster, denormalization</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Application and Security Design</h3>
+                <ul>
+                    <li>Who, What (and When/Where)</li>
+                    <li>Siapa yang boleh mengakses database</li>
+                    <li>Data apa yang boleh diakses? (table, kolom, baris)</li>
+                    <li>Kapan akses diperbolehkan atau dari mana</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Entity Relationship Diagram (ERD)</h2>
+                <ul>
+                    <li>Menggambarkan aliran data dalam bentuk hubungan antar object</li>
+                    <li>Terdiri dari: <strong>Entity</strong>, <strong>Atribut</strong> dan <strong>Relation</strong></li>
+                    <li>Entity merepresentasikan object pada dunia nyata yang datanya akan disimpan pada database</li>
+                    <li>Setiap entity memiliki kumpulan atribut yang mendifinisikan entity tersebut</li>
+                    <li>Setiap entity memiliki relasi dengan entity lain yang menggambarkan interaksi antar object</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Entity</h3>
+                <ul>
+                    <li>Object yang memiliki peran penting dalam proses bisnis dan datanya perlu disimpan di database</li>
+                    <li>Biasanya dituliskan dalam kata benda, mis. Barang, Jadwal Kuliah</li>
+                    <li>Entity diimplementasikan menjadi tabel di dalam database</li>
+                    <li>Instance entity diidentifikasi melalui atribut kunci</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Atribut</h3>
+                <ul>
+                    <li>Data entity yang akan direkam ke dalam database</li>
+                    <li>Setiap instance dari entity yang sama memiliki kumpulan atribut yang sama</li>
+                    <li>Instance entity direpresentasikan ke dalam baris (record, tuple), atribut entity direpresentasikan ke dalam kolom (field)</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Entity, Atribut & Instance</h3>
+                <img src="images/entity-instance.png">
+            </section>
+            <section>
+                <h3>Relationship</h3>
+                <ul>
+                    <li>Menggambarkan hubungan antara satu entity dengan entity lainnya</li>
+                </ul>
+                <img src="images/one-to-many.png">
+            </section>
+            <section>
+                <h4>Relationship Cardinality</h4>
+                <ul>
+                    <li>Setiap hubungan entity dideskripsikan dengan cardinality, banyak hubungan antar instance entity</li>
+                    <li>Jenis cardinality:
+                        <ul>
+                            <li>One-to-One</li>
+                            <li>One-to-Many</li>
+                            <li>Many-to-Many</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h5>Relationship One-to-One</h5>
+                <ul>
+                    <li>1 instance entity terhubung ke 1 instance entity lainnya</li>
+                    <li>Mis: 1 penduduk memiliki 1 kartu pemilihan umum</li>
+                </ul>
+                <img src="images/one-to-one.png">
+            </section>
+            <section>
+                <h5>Relationship One-to-Many</h5>
+                <ul>
+                    <li>1 instance entity terhubung ke banyak instance entity lainnya</li>
+                    <li>Mis: 1 orang memiliki banyak email account</li>
+                </ul>
+                <img src="images/one-to-many.png">
+            </section>
+            <section>
+                <h5>Relationship Many-to-Many</h5>
+                <ul>
+                    <li>Banyak instance entity terhubung ke banyak instance entity lainnya</li>
+                    <li>Mis: mahasiswa mengambil mata kuliah</li>
+                </ul>
+                <img src="images/many-to-many.png">
+            </section>
+            <section>
+                <h4>Cardinality Constraint</h4>
+                <ul>
+                    <li>Aturan mengenai jumlah hubungan antar instance entity</li>
+                    <li>Terdiri dari:
+                        <ul>
+                            <div style="width: 50%; float: left;">
+                                <li>Optional one<br><img src="images/optional-one.png"></li>
+                                <li>Mandatory one<br><img src="images/mandatory-one.png"></li>
+                            </div>
+                            <div style="width: 50%; float: left;">
+                                <li>Optional many<br><img src="images/optional-many.png"></li>
+                                <li>Mandatory many<br><img src="images/mandatory-many.png"></li>
+                            </div>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h4>Relationship Degree</h4>
+                <ul>
+                    <li>Banyak entity yang terlibat pada sebuah relationship
+                        <ul>
+                            <div style="width: 50%; float: left;">
+                                <li>Unary<br><img src="images/unary.png"></li>
+                                <li>Binary<br><img src="images/many-to-many.png"></li>
+                            </div>
+                            <div style="width: 50%; float: left;">
+                                <li>Ternary <img src="images/ternary.png"></li>
+                            </div>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <script src="reveal.js/js/reveal.js"></script>
+    <script>
+    Reveal.initialize({
+        dependencies: [
+            // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+            //{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+            // Interpret Markdown in <section> elements
+            //{ src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            //{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+            // Syntax highlight for <code> elements
+            //{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+            // Zoom in and out with Alt+click
+            //{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+
+            // Speaker notes
+            //{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+
+            // MathJax
+            //{ src: 'reveal.js/plugin/math/math.js', async: true }
+        ]
+    });
+    </script>
+
+</body>
+</html>
