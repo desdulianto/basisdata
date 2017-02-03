@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/white.css">
+    <title>Sistem Basis Data: Model Relasional</title>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h1>Sistem Basis Data</h1>
+                <h2>Model Relasional</h2>
+            </section>
+            <section>
+                <h2>Model Relasional</h2>
+                <ul>
+                    <li>Database terdiri dari satu atau lebih <em>relation</em></li>
+                    <li>Setiap <em>relation</em> terdiri dari kolom (field) dan baris (record)</li>
+                    <li>Setiap <em>entity</em>pada model ER menjadi <em>relation</em> pada model Relasional</li>
+                    <li>Atribut entity pada model ER menjadi kolom (field) pada model relasional</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Relation</h2>
+                <ul>
+                    <li>Terdiri dari <em>relation schema</em> dan <em>relation instance</em></li>
+                    <li>Relation schema terdiri dari nama relasi, judul field dan tipe/domain dari masing-masing field</li>
+                    <li>Relation instance merupakan kumpulan baris yang disebut tuple/record</li>
+                    <li>Contoh relation schema:<br>Mahasiswa(NIM: string, nama: string, jenis kelamin: string, tanggal lahir: date, tempat lahir: string, alamat: string)</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Model ER to Model Relasional</h2>
+                <div style="float: left; width: 40%;">
+                    <figure>
+                        <img src="images/er-model.png" alt="Model ER">
+                        <figcaption>Model ER</figcaption>
+                    </figure>
+                </div>
+                <div style="float: left; width: 60%;">
+                    <figure>
+                        <img src="images/relasional-model.png" alt="Model Relasional">
+                        <figcaption>Model Relasional</figcaption>
+                    </figure>
+                </div>
+            </section>
+            <section>
+                <h2>Integrity Constraint</h2>
+                <ul>
+                    <li>Kualitas data di dalam database tergantung pada integrita data yang disimpan</li>
+                    <li>Untuk menjaga integritas data, perlu didefinisikan constraint/batasan terhadap data yang disimpan</li>
+                    <li>Tipe/domain field pada schema relasi merupakan salah satu bentuk constraint yang membatasi data yang bisa dimasukkan ke dalam kolom tertentu.<br>
+                        Mis: tidak bisa memasukkan data string ke kolom bertipe date/integer dll.</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Field Data Type</h3>
+                <ul>
+                    <li>Menentukan jenis data yang bisa diisikan pada kolom tertentu di setiap record</li>
+                    <li>Tipe data umum:
+                        <ul>
+                            <li>Character: <code>char</code>, <code>varchar</code>, <code>text</code></li>
+                            <li>Numeric: <code>integer</code>, <code>bigint</code>, <code>smallint</code>, <code>real</code>, <code>double</code></li>
+                            <li>Date/Time: <code>date</code>, <code>time</code>, <code>timestamp</code></li>
+                            <li>Boolean: <code>true</code> atau <code>false</code></li>
+                        </ul>
+                    </li>
+                    <li>Masing-masing DBMS memiliki tipe data khusus. Cth: Enumerated, Geometric, JSON, dll.</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Key Constraints</h3>
+                <ul>
+                    <li>Memberikan batasan terhadap instance relation (tuple/record).</li>
+                    <li>Tidak memperbolehkan tuple/record yang memiliki data yang sama untuk keseluruhan field/kolom</li>
+                    <li>Dengan kata lain, setiap tuple/record harus bersifat unik, tujuannya adalah untuk mengidentifikasi masing-masing tuple/record</li>
+                    <li>Kumpulan field yang mengidentifikasi record secara unik disebut <em>candidate key</em></li>
+                </ul>
+            </section>
+            <section>
+                <h3>Key Constraints</h3>
+                <img src="images/table-mahasiswa.png" alt="Model Relasional">
+            </section>
+            <section>
+                <h3>Key Constraints: Primary Key</h3>
+                <ul>
+                    <li>Dari pilihan candidate key yang tersedia, dipilih 1 key yang nantinya akan menjadi primary key</li>
+                    <li>Primary key menjadi field/atribut yang digunakan untuk mengidentifikasi masing-masing record</li>
+                    <li>Primary key otomatis akan mendapatkan constraints unique (tidak boleh memiliki nilai yang sama untuk seluruh record) dan
+                        akan di-<em>index</em> oleh DBMS untuk mempercepat pencarian data</li>
+                    <li>Dua atau lebih kolom yang dijadikan <em>primary key</em> disebut <em>composite key</em></li>
+                </ul>
+            </section>
+            <section>
+                <h3>Key Constraints: Foreign Key</h3>
+                <ul>
+                    <li>Kolom yang menjadi penghubung antar satu tabel dengan tabel lainnya disebut: <em>foreign key</em></li>
+                    <li>Mis. Tabel Mahasiswa yang terhubung dengan Tabel Nilai (menyimpan informasi nilai Mahasiswa tersebut untuk Matakuliah yang diikuti)</li>
+                </ul>
+                <img src="images/foreign-key.png" alt="Foreign Key">
+            </section>
+            <section>
+                <h3>Key Constraints: Foreign Key</h3>
+                <ul>
+                    <li>Tabel yang menyimpan kolom <em>foreign key</em> disebut <em>child table</em></li>
+                    <li>Tabel yang menyimpan kolom <em>primary key</em> disebut <em>parent table</em></li>
+                    <li>Record pada <em>child table</em> bergantung pada record di <em>parent table</em>. Contoh: DBMS tidak memperbolehkan penambahan/update record pada tabel Nilai yang NIM nya tidak ada di tabel Mahasiswa</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <script src="reveal.js/js/reveal.js"></script>
+    <script>
+    Reveal.initialize({
+        dependencies: [
+            // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+            //{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+            // Interpret Markdown in <section> elements
+            //{ src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            //{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+            // Syntax highlight for <code> elements
+            //{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+            // Zoom in and out with Alt+click
+            //{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+
+            // Speaker notes
+            //{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+
+            // MathJax
+            //{ src: 'reveal.js/plugin/math/math.js', async: true }
+        ]
+    });
+    </script>
+
+</body>
+</html>
