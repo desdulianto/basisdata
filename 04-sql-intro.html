@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/white.css">
+    <title>Sistem Basis Data: Structured Query Language (SQL)</title>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h1>Structured Query Language (SQL)</h1>
+            </section>
+            <section>
+                <h2>Structured Query Language</h2>
+                <ul>
+                    <li>Special-purpose programming language untuk mengelola RDBMS</li>
+                    <li>Terdiri dari 3 jenis:
+                        <ul>
+                            <li>Data Definition Language (DDL)<br>
+                                Mendefinisikan dan memanipulasi skema database (database, table, view, dll)
+                            </li>
+                            <li>Data Manipulation Languate (DML)<br>
+                                Melakukan query terhadap table, sering disebut operasi CRUD (Create, Read, Update Delete).
+                            </li>
+                            <li>Data Control Language (DCL)<br>
+                                Memberikan atau menghapus akses terhadap object database.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Structured Query Language</h2>
+                <ul>
+                    <li><em>Case insensitive</em>, tidak membedakan huruf besar ataupun huruf kecil</li>
+                    <li>Apabila menjalankan lebih dari satu statement, akhiri setiap perintah SQL dengan titik koma (;)</li>
+                    <li>Gunakan tanda <em>dash dash</em> (--) untuk menandakan baris komentar</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Data Definition Language</h2>
+                <p>Membuat table</p>
+<pre><code>
+CREATE TABLE Mahasiswa (
+    nim  char(6),
+    nama varchar(50),
+    jenis_kelamin varchar(9),
+    tanggal_lahir date,
+    tempat_lahir varchar(50),
+    primary key (nim)
+)
+</code>
+</pre>
+                    </li>
+            </section>
+            <section>
+                <h2>Data Definition Language</h2>
+                <p>Tipe data</p>
+                <ul>
+                    <li>String: <code>char, varchar, text</code></li>
+                    <li>Numeric: <code>smallint, int, bigint, float, real, double</code></li>
+                    <li>Boolean: <code>true/false</code></li>
+                    <li>Date/Time: <code>date, time, timestamp</code></li>
+                    <li>Binary: <code>blob (binary large object)</code></li>
+                </ul>
+            </section>
+            <section>
+                <h2>Data Definition Language</h2>
+                <p>Alter Table (menambah, menghapus dan mengubah kolom)</p>
+<pre><code>
+-- menambah kolom
+ALTER TABLE Mahasiswa ADD ( tahun_ajaran int )
+
+-- mengubah kolom
+ALTER TABLE Mahasiswa MODIFY ( tahun_ajaran int )
+
+-- menghapus kolom
+ALTER TABLE Mahasiswa DROP ( tahun_ajaran )
+</code>
+</pre>
+            </section>
+            <section>
+                <h2>Data Definition Language</h2>
+                <p>Menghapus table</p>
+<pre><code>
+DROP TABLE Mahasiswa
+</code>
+</pre>
+            </section>
+            <section>
+                <h2>Data Manipulation Language</h2>
+                <p>Menambah data</p>
+<pre><code>
+INSERT INTO Mahasiswa VALUES ('001122', 'Budi', 'Laki-laki', '02-Feb-1993', 'Medan')
+</code>
+</pre>
+            </section>
+            <section>
+                <h2>Data Manipulation Language</h2>
+                <p>Menampilkan data</p>
+<pre><code>
+-- menampilkan seluruh data mahasiswa
+SELECT * FROM Mahasiswa;
+
+-- menampilkan nim dan nama mahasiswa
+SELECT nim, nama FROM Mahasiswa;
+
+-- menampilkan nim dan nama mahasiswa perempuan
+SELECT nim, nama FROM Mahasiswa WHERE jenis_kelamin='Perempuan';
+</code>
+</pre>
+            </section>
+            <section>
+                <h2>Data Manipulation Language</h2>
+                <p>Mengubah data</p>
+<pre><code>
+UPDATE Mahasiswa SET nama = 'Andri' WHERE nama = 'Budi'
+</code></pre>
+            </section>
+            <section>
+                <h2>Data Manipulation Language</h2>
+                <p>Menghapus data</p>
+<pre><code>
+DELETE FROM Mahasiswa WHERE nama = 'Andri'
+</code></pre>
+            </section>
+        </div>
+    </div>
+    <script src="reveal.js/js/reveal.js"></script>
+    <script>
+    Reveal.initialize({
+        dependencies: [
+            // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+            //{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+            // Interpret Markdown in <section> elements
+            //{ src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            //{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+            // Syntax highlight for <code> elements
+            //{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+            // Zoom in and out with Alt+click
+            //{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+
+            // Speaker notes
+            //{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+
+            // MathJax
+            //{ src: 'reveal.js/plugin/math/math.js', async: true }
+        ]
+    });
+    </script>
+
+</body>
+</html>
