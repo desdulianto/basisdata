@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/white.css">
+    <title>Sistem Basis Data: Normalisasi Database</title>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h1>Normalisasi Database</h1>
+            </section>
+            <section>
+                <h2>Normalisasi</h2>
+                <ul>
+                    <li>Tahapan untuk menyempurnakan skema logis</li>
+                    <li>Menghilangkan redundancy (perulangan) data</li>
+                    <li>Redundancy menyebabkan anomali pada pengoperasian database</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Anomali</h2>
+                <dl>
+                    <dt>Anomali penambahan data</dt>
+                    <dd>Penambahan data baru mengharuskan pengisian ulang atribut tertentu dengan nilai yang sama</dd>
+                    <dt>Anomali penghapusan data</dt>
+                    <dd>Penghapusan data dapat menyebabkan hilangnya nilai atribut yang hanya ada di record yang dihapus</dd>
+                    <dt>Anomali perubahan data</dt>
+                    <dd>Perubahan data pada atribut record tertentu mengharuskan perubahan data pada atribut yang sama di record yang lain</dd>
+                </dl>
+            </section>
+            <section>
+                <h2>Anomali</h2>
+                <img src="images/source-form.png" alt="Form">
+            </section>
+            <section>
+                <h2>Anomali</h2>
+                <figure>
+                    <img src="images/unf.png" alt="UNF">
+                    <figcaption>Unnormal Form</figcaption>
+                </figure>
+            </section>
+            <section>
+                <h2>Anomali Penambahan Data</h2>
+                <p>Apa yang terjadi kalau perlu ditambahkan informasi produk baru (Product ID, Product Description, Product Finish, Product StandardPrice)
+                   tetapi belum terjadi penjualan produk itu sama sekali sebelumnya?</p>
+            </section>
+            <section>
+                <h2>Anomali Perubahan Data</h2>
+                <p>Apa yang terjadi apabila Customer "Value Furniture" pindah alamat?</p>
+            </section>
+            <section>
+                <h2>Anomali Penghapusan Data</h2>
+                <p>Apa yang terjadi apabila Product ID 7 Dining Table dihapus dari database?</p>
+            </section>
+            <section>
+                <h2>Tahapan normalisasi</h2>
+                <ul>
+                    <li>Unnormal form (UNF)</li>
+                    <li>1st Normal Form (1NF)</li>
+                    <li>2nd Normal Form (2NF)</li>
+                    <li>3rd Normal Form (3NF)</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Unnormal Form (UNF)</h3>
+                <p>Masih memiliki atribut multivalue</p>
+                <img src="images/unf.png" alt="UNF">
+            </section>
+            <section>
+                <h3>1st Normal Form (1NF)</h3>
+                <ul>
+                    <li>Seluruh atribut multivalue menjadi atomic (menjadi instance tersendiri)</li>
+                </ul>
+                <img src="images/1nf.png" alt="1NF">
+            </section>
+            <section>
+                <h3>2nd Normal Form (2NF)</h3>
+                <ul>
+                    <li>Memenuhi persyaratan 1NF</li>
+                    <li>Seluruh atribut non kunci bergantung sepenuhnya pada atribut kunci/candidate key (functional dependency)</li>
+                </ul>
+            </section>
+            <section>
+                <h3>3rd Normal Form (3NF)</h3>
+                <ul>
+                    <li>Memenuhi persyaratan 2NF</li>
+                    <li>Tidak ada lagi atribut non kunci yang bergantung pada pada atribut non kunci lainnya (transitive dependency)</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Full, Partial & Transitive Dependency</h3>
+                <img src="images/depencies.png" alt="Full, Partial & Transitive Dependency">
+            </section>
+            <section>
+                <h3>2NF & 3NF</h3>
+                <img src="images/2nf-3nf.png" alt="2NF & 3NF">
+            </section>
+            <section>
+                <h3>3NF</h3>
+                <img src="images/3nf.png" alt="3NF">
+            </section>
+        </div>
+    </div>
+    <script src="reveal.js/js/reveal.js"></script>
+    <script>
+    Reveal.initialize({
+        dependencies: [
+            // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+            //{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+            // Interpret Markdown in <section> elements
+            //{ src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            //{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+            // Syntax highlight for <code> elements
+            //{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+            // Zoom in and out with Alt+click
+            //{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+
+            // Speaker notes
+            //{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+
+            // MathJax
+            //{ src: 'reveal.js/plugin/math/math.js', async: true }
+        ]
+    });
+    </script>
+
+</body>
+</html>
